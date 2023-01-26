@@ -5,7 +5,7 @@ exports.createOder = (req, res) => {
 
   if (!table) return res.status(400).json({ msg: "enter table NO.!!!" });
 
-  console.log(name, price, quanity, total);
+  // console.log(name, price, quanity, total);
 
   const newOder = new Oder({
     Name: name,
@@ -15,8 +15,6 @@ exports.createOder = (req, res) => {
     Table: table,
     Extra: extra,
   });
-
-  console.log(newOder);
 
   newOder
     .save()

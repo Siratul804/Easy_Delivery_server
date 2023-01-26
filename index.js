@@ -8,6 +8,31 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
+//socket
+
+const http = require("http");
+const { Server } = require("socket.io");
+
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: ["http://localhost:3000", "http://localhost:4000"],
+    methods: ["GET", "POST"],
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log("someone has connected !");
+
+  socket.on("send_oder", (data) => {
+    socket.broadcast.emit("receive_oder", data);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("someone has disconnect");
+  });
+});
+
 //Middwares
 
 app.use(bodyParser.json());
@@ -51,6 +76,6 @@ mongoose
     console.log("Database connected easy-delivery ! ");
   });
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
