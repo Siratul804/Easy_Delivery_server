@@ -16,7 +16,10 @@ const { Server } = require("socket.io");
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:3000", "http://localhost:4000"],
+    origin: [
+      "https://easy-delivery-client.onrender.com/",
+      "https://easy-delivery-admin.onrender.com/",
+    ],
     methods: ["GET", "POST"],
   },
 });
