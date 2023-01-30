@@ -17,8 +17,8 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: [
-      "https://easy-delivery-client.onrender.com/",
-      "https://easy-delivery-admin.onrender.com/",
+      "https://easy-delivery-client.onrender.com",
+      "https://easy-delivery-admin.onrender.com",
     ],
     methods: ["GET", "POST"],
   },
