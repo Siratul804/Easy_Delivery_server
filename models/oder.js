@@ -38,6 +38,7 @@ const cartSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    time: { type: String },
   },
   { timestamps: true }
 );

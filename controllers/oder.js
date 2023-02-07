@@ -3,6 +3,8 @@ const Oder = require("../models/oder");
 exports.createOder = (req, res) => {
   const { name, price, quanity, total, table, extra } = req.body;
 
+  const time = new Date();
+
   if (!table) return res.status(400).json({ msg: "enter table NO.!!!" });
 
   // console.log(name, price, quanity, total);
@@ -14,6 +16,7 @@ exports.createOder = (req, res) => {
     Total: total,
     Table: table,
     Extra: extra,
+    time: time,
   });
 
   newOder
